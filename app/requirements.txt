@@ -1,0 +1,7 @@
+Django==2.2.4
+pandas==0.25.0
+gunicorn==20.0.4
+social-auth-app-django==4.0.0
+social-auth-core==3.3.3
+mysqlclient==1.4.6
+scikit-learn==0.20.4

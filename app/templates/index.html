@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <!-- Page Content -->
+  <div class="container">
+    
+    <div class="container">
+      <div class="row mt-5 mb-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 center-block text-center">
+          <h3>Discover The Best Entry-Level Jobs In Tech & Marketing</h3>
+          <!-- <p>
+            Be the first to know about new job listings delivered weekly to your inbox
+          </p> -->
+          {% if user.is_authenticated %}
+            <b>Happy job hunting</b>, {{ user.username }}!
+          {% else %}
+            <p>
+              Login to receive new job opportunities relevant to your profile weekly to your inbox
+            </p>
+            <button type="submit" class="btn site-buttons" data-toggle="modal" data-target="#loginModal">
+              <!-- <a href="/candidate/login" class='anchors'>Login</a> -->
+              Login
+            </button>
+          {% endif %}
+
+          <!-- Login Modal -->
+          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="loginModalLabel">Candidate Login</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class = "row">
+                    <div class="col-md-6">
+                      <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-social btn-google">
+                        <span class="fa fa-google"></span> Sign in with Google
+                      </a>
+                    </div>
+                    <div class="col-md-6"></div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <form class="center-block text-center" method="POST">
+            <div class="form-group">
+              <div class="active-cyan-3 active-cyan-4 mb-4">
+                <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <small id="emailHelp" class="form-text text-muted">{{caption}}</small>
+            </div>
+            <button type="submit" class="btn btn-primary site-buttons">Subscribe</button>
+          </form> -->
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <!-- Search form -->
+          <form method="POST">
+            <div class="active-cyan-3 active-cyan-4 mb-4">
+              <input class="form-control" type="text" placeholder="Job title, company name or location" aria-label="Search" name="search_keyword" value="{{search_input_value}}">
+            </div>
+          </form>
+          <span>{{no_results_copy}}</span>
+          <div class="accordion" id="accordionExample">
+            {% for job in job_listings %}
+              <div class="card">
+                <div class="card-header" id="heading{{job.id}}">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{job.id}}" aria-expanded="true" aria-controls="collapse{{job.id}}" style="text-decoration: none;">
+                      <div class="container">
+                        <div class="row">
+                          <div align="left">
+                            <b><span style="color:black;">{{job.company_name}}</span> - <span style="color:black;">{{job.job_role}}</span></b>
+                            <br>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i> <span style="color:black;">{{job.location}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-calendar" aria-hidden="true"></i>  <span style="color: black;">{{job.job_posted_on}}</span>
+                            <!-- <br>
+                            {{job.skills}} -->
+                          </div>
+                          <!-- <div class="col-md-3"></div> -->
+                          <!-- <div align="right">
+                            <span style="color:#8A2BE2;">{{job.location}}</span>
+                          </div> -->
+                          
+                        </div>
+                      </div>
+                    </button>
+                </div>
+            
+                <div id="collapse{{job.id}}" class="collapse" aria-labelledby="heading{{job.id}}" data-parent="#accordionExample">
+                  <div class="card-body">
+                    {{job.description}}
+                    <br><br>
+                    <button type="submit" class="btn site-buttons">
+                      <a href="{{job.link}}" class='anchors' target="_blank">Apply</a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <br>
+              {% endfor %}
+          </div>
+        </div>
+
+
+
+
+
+
+
+        
+        <div class="col-md-3">
+          <h5>Featured Skills</h5>
+          <ul class="list-group" style="background-color: transparent;">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-primary" style="background-color:#FFFB00; border-color: #FFFB00;">
+                <a href="?q=python" style="color: black">python</a>
+              </button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-primary" style="background-color:#FFFB00; border-color: #FFFB00;">
+                <a href="?q=data science" style="color: black">data science</a>
+              </button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-primary" style="background-color:#FFFB00; border-color: #FFFB00;">
+                <a href="?q=machine learning" style="color: black">machine learning</a>
+              </button>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-primary" style="background-color:#FFFB00; border-color: #FFFB00;">
+                <a href="?q=nlp" style="color: black">nlp</a>
+              </button>
+            </li>
+          </ul>
+          <br>
+
+          <!-- <h5>Featured Skills 2</h5>
+          <ul class="list-group">
+
+            {% for item in feat_skills %}
+
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="?q={{item.skill}}">{{item.skill}}</a>
+                <span class="badge badge-primary badge-pill">{{item.count}}</span>
+              </li>
+            
+            {% endfor %}
+          </ul> -->
+
+
+        </div>
+        
+      </div>
+  </div>
+{% endblock content %}

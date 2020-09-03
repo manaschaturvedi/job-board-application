@@ -1,0 +1,49 @@
+.active-cyan-4 input[type=text]:focus:not([readonly]) {
+    border: 1px solid #FFFB00;
+    box-shadow: 0 0 0 1px #FFFB00;
+  }
+  .active-cyan-3 input[type=text] {
+    border: 1px solid #FFFB00;
+    box-shadow: 0 0 0 1px #FFFB00;
+  }
+
+.site-buttons
+{
+  background-color: #FFFB00;
+  color: black;
+  border-color: #FFFB00;
+}
+
+.site-buttons:hover
+{
+  background-color: #FFFB00;
+  color: black;
+  border-color: #FFFB00;
+}
+
+.site-buttons:active
+{
+  background-color: #FFFB00;
+  color: black;
+  border-color: #FFFB00;
+}
+
+.fa
+{
+  color:black;
+}
+
+a
+{
+  color: black;
+}
+
+.anchors
+{
+  text-decoration: none;
+}
+
+.anchors:hover
+{
+  color: black;
+}

@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:5.6
+        ports:
+          - '13306:3306'
+        environment:
+          MYSQL_DATABASE: 'zeroxp_database'
+        #    MYSQL_USER: 'root'
+        #    MYSQL_PASSWORD: '123'
+          MYSQL_ROOT_PASSWORD: '123'
+    web:
+      build:
+        context: ./app
+        dockerfile: Dockerfile.prod
+        # command: python manage.py runserver 0.0.0.0:8000
+      command: gunicorn zeroxppro.wsgi:application --bind 0.0.0.0:8000
+      volumes:
+        # - ./app/:/usr/src/app/
+        - static_volume:/home/app/web/staticfiles
+        - media_volume:/home/app/web/mediafiles
+      expose:
+        - 8000
+      depends_on:
+        - db
+    nginx:
+      build: ./nginx
+      volumes:
+        - static_volume:/home/app/web/staticfiles
+        - media_volume:/home/app/web/mediafiles
+      ports:
+        - 1337:80
+      depends_on:
+        - web
+volumes:
+  static_volume:
+  media_volume:

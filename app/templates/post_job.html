@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-9">
+        <div class="container">
+            <br>
+            <h2>Post a Job</h2>
+            <form method='POST'>
+                <div class="active-cyan-3 active-cyan-4 mb-4">
+                    <input class="form-control" type="text" placeholder="Company Name" name="company_name"><br>
+                    <input class="form-control" type="text" placeholder="Job Role" name="job_role"><br>
+                    <div class="active-cyan-3 active-cyan-4 mb-4">
+                        <textarea class="form-control" id="description" placeholder="Job Description" rows="3" name='description' style="border: 1px solid #FFFB00; box-shadow: 0 0 0 1px #FFFB00;"></textarea>
+                    </div><br>
+                    <input class="form-control" type="text" placeholder="Link" name="link"><br>
+                    <input class="form-control" type="text" placeholder="Location" name="location"><br>
+                    <input class="form-control" type="text" placeholder="Salary" name="salary"><br>
+                    <input class="form-control" type="text" placeholder="Job Type" name="job_type"><br>
+                    <input class="form-control" type="text" placeholder="Job Category" name="job_category"><br>
+                    <input class="form-control" type="text" placeholder="Skills" name="skills"><br>
+                </div>
+                <button type="submit" class="btn site-buttons">Submit</button>
+            </form>
+            
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+    </div>
+</div>
+{% endblock content %}

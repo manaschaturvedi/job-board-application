@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': 'zeroxp_database',
         'USER': 'root',
         'PASSWORD': '123',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
-        # 'HOST': 'db',
+        # 'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'HOST': 'db',
         'PORT': '3306',
     }
 }

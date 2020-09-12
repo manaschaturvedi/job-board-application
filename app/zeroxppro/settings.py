@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': 'zeroxp_database',
         'USER': 'root',
         'PASSWORD': '123',
-        # 'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
-        'HOST': 'db',
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        # 'HOST': 'db',
         'PORT': '3306',
     }
 }
@@ -135,12 +135,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# production settings
+# # STATICFILES_DIRS = (
+# #     os.path.join(BASE_DIR, 'staticfiles'),
+# # )
+
+STATIC_URL = "/staticfiles/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# localhost settings
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'staticfiles'),
 # )
 
-STATIC_URL = "/staticfiles/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_URL = "/static/"
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',

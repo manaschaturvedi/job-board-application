@@ -42,8 +42,14 @@
               <a class="nav-link" href="{% url 'post_new_job' %}" style="color: black;">Post a Job</a>
             </li>
             <li class="nav-item">
+              {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'candidate_dashboard' %}">Dashboard</a>
+              {% else %}
+                
+              {% endif %}
+            </li>
+            <li class="nav-item">
                 {% if user.is_authenticated %}
-                  <!-- <p>{{ user.username }}</p> -->
                   <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 {% else %}
                   <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">
@@ -56,9 +62,12 @@
       </div>
     </nav>
 	<div class="container">
-		{% block content %}
 
-    {% endblock content %}
+    <div class="main">
+      {% block content %}
+
+      {% endblock content %}
+    </div>
     
     <!-- Footer -->
     <footer class="page-footer font-small blue">

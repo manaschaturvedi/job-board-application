@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'zeroxpapp',
     'social_django',
+    'candidates',
 ]
 
 MIDDLEWARE = [
@@ -161,7 +162,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Xhuu2pmZfRXGsPwo9RuXcJCH'
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/candidate/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
